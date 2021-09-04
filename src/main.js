@@ -17,6 +17,8 @@ var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
 var grid = document.querySelector(".saved-posters-grid")
 
+
+
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -142,12 +144,16 @@ savePosterButton.addEventListener('click', function() {
   pushIntoArray()
   saveUserData()
   displayInGrid()
+
 })
 customPosterButton.addEventListener('click', function() {
   createCustomPoster();
   showUserPoster()
   event.preventDefault()
 });
+
+grid.addEventListener('dblclick', deleteTest);
+
 // functions and event handlers go here 👇
 
 
@@ -183,7 +189,7 @@ function showUserPoster() {
 
 function createCustomPoster() {
   currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
-  console.log('image',currentPoster.imageURL)
+  console.log('image', currentPoster.imageURL)
 }
 
 function saveUserData() {
@@ -191,22 +197,26 @@ function saveUserData() {
   titles.push(titleElement.innerText)
   quotes.push(quoteElement.innerText)
 
-  }
+}
 
-function pushIntoArray(){
+function pushIntoArray() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
-      console.log((!savedPosters.includes(currentPoster)))
-    }
+    console.log((!savedPosters.includes(currentPoster)))
   }
+}
 
 function displayInGrid() {
   grid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++) {
-    grid.innerHTML += `<article class= "mini-poster">
+    grid.innerHTML += `<article class= "mini-poster" id = ${savedPosters[i].id}>
     <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
     <h2>${savedPosters[i].title}</h2>
     <h4> ${savedPosters[i].quote}</h4>
     </article>`
   }
+}
+
+function deleteTest() {
+
 }
