@@ -218,5 +218,16 @@ function displayInGrid() {
 }
 
 function deleteTest() {
-
+  console.log(event.target.id)
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (`${savedPosters[i].id}` === event.target.id || `${savedPosters[i].id}` === event.target.parentNode.id) {
+      savedPosters.splice(i, 1);
+    }
+    console.log("event id", event.target.id)
+  }
+  displayInGrid();
 }
+// var = event.target.parentNode.id
+
+//look into the savedPosters array, delete object with matching ID
+//event.target.id
