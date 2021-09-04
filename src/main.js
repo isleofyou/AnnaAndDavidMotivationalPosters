@@ -17,8 +17,6 @@ var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
 var grid = document.querySelector(".saved-posters-grid")
 
-
-
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -144,25 +142,19 @@ savePosterButton.addEventListener('click', function() {
   pushIntoArray()
   saveUserData()
   displayInGrid()
-
 })
 customPosterButton.addEventListener('click', function() {
   createCustomPoster();
   showUserPoster()
   event.preventDefault()
 });
-
 grid.addEventListener('dblclick', deleteTest);
 
 // functions and event handlers go here 👇
-
-
 randomize();
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
-
 function randomize() {
   var txtImgOptions = [images, titles, quotes];
   var randomPoster = [];
@@ -174,38 +166,31 @@ function randomize() {
   displayPoster();
   console.log(mainPosterPage.classList)
 }
-
 function displayPoster() {
   imageElement.src = currentPoster.imageURL
   titleElement.innerText = currentPoster.title
   quoteElement.innerText = currentPoster.quote
 }
-
 function showUserPoster() {
   posterFormPage.classList.add("hidden")
   mainPosterPage.classList.remove("hidden")
   displayPoster()
 }
-
 function createCustomPoster() {
   currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
   console.log('image', currentPoster.imageURL)
 }
-
 function saveUserData() {
   images.push(imageElement.src)
   titles.push(titleElement.innerText)
   quotes.push(quoteElement.innerText)
-
 }
-
 function pushIntoArray() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
     console.log((!savedPosters.includes(currentPoster)))
   }
 }
-
 function displayInGrid() {
   grid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++) {
@@ -216,18 +201,11 @@ function displayInGrid() {
     </article>`
   }
 }
-
 function deleteTest() {
-  console.log(event.target.id)
   for (var i = 0; i < savedPosters.length; i++) {
     if (`${savedPosters[i].id}` === event.target.id || `${savedPosters[i].id}` === event.target.parentNode.id) {
       savedPosters.splice(i, 1);
     }
-    console.log("event id", event.target.id)
   }
   displayInGrid();
 }
-// var = event.target.parentNode.id
-
-//look into the savedPosters array, delete object with matching ID
-//event.target.id
