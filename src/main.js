@@ -133,15 +133,12 @@ nevermindButton.addEventListener('click', function() {
 backToMainButton.addEventListener('click', function() {
   toggleHiddenView(mainPosterPage, savedPostersPage)
 })
-savePosterButton.addEventListener('click', function() {
-  pushIntoArray()
-  saveUserData()
-  displayInGrid()
-})
+savePosterButton.addEventListener('click', saveUserPoster)
 customPosterButton.addEventListener('click', function() {
-  createCustomPoster()
-  showUserPoster()
   event.preventDefault()
+  createCustomPoster()
+  displayPoster()
+  toggleHiddenView(mainPosterPage, posterFormPage)
 })
 grid.addEventListener('dblclick', deletePoster)
 
@@ -175,11 +172,6 @@ function displayPoster() {
   quoteElement.innerText = currentPoster.quote
 }
 
-function showUserPoster() {
-  toggleHiddenView(mainPosterPage, posterFormPage)
-  displayPoster()
-}
-
 function createCustomPoster() {
   currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
 }
@@ -199,12 +191,20 @@ function pushIntoArray() {
 function displayInGrid() {
   grid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++) {
-    grid.innerHTML += `<article class= "mini-poster" id = ${savedPosters[i].id}>
-    <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
-    <h2>${savedPosters[i].title}</h2>
-    <h4> ${savedPosters[i].quote}</h4>
-    </article>`
+    grid.innerHTML += `
+                        <article class= "mini-poster" id = ${savedPosters[i].id}>
+                            <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
+                            <h2>${savedPosters[i].title}</h2>
+                            <h4> ${savedPosters[i].quote}</h4>
+                        </article>
+                      `
   }
+}
+
+function saveUserPoster() {
+  saveUserData()
+  pushIntoArray()
+  displayInGrid()
 }
 
 function deletePoster() {
