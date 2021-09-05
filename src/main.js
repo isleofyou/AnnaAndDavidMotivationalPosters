@@ -120,17 +120,17 @@ var quotes = [
 
 
 // event listeners go here 👇
-randomizeButton.addEventListener('click', randomize)
-showFormButton.addEventListener('click', function(){
+randomizeButton.addEventListener('click', randomizeAndDisplay)
+showFormButton.addEventListener('click', function() {
   toggleHiddenView(posterFormPage, mainPosterPage)
 })
-savedPostersButton.addEventListener('click', function(){
+savedPostersButton.addEventListener('click', function() {
   toggleHiddenView(savedPostersPage, mainPosterPage)
 })
-nevermindButton.addEventListener('click', function(){
+nevermindButton.addEventListener('click', function() {
   toggleHiddenView(mainPosterPage, posterFormPage)
 })
-backToMainButton.addEventListener('click', function(){
+backToMainButton.addEventListener('click', function() {
   toggleHiddenView(mainPosterPage, savedPostersPage)
 })
 savePosterButton.addEventListener('click', function() {
@@ -146,10 +146,10 @@ customPosterButton.addEventListener('click', function() {
 grid.addEventListener('dblclick', deletePoster)
 
 // functions and event handlers go here 👇
-randomize()
+randomizeAndDisplay()
 
 function toggleHiddenView(elementToShow, elementToHide) {
-	elementToShow.classList.remove('hidden')
+  elementToShow.classList.remove('hidden')
   elementToHide.classList.add('hidden')
 }
 
@@ -157,30 +157,15 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-// function showMainPage() {
-//   mainPosterPage.classList.remove('hidden')
-//   savedPostersPage.classList.add('hidden')
-//   posterFormPage.classList.add('hidden')
-// }
+function createRandomPoster() {
+  var imagesIndex = getRandomIndex(images)
+  var titlesIndex = getRandomIndex(titles)
+  var quotesIndex = getRandomIndex(quotes)
+  return currentPoster = new Poster(images[imagesIndex], titles[titlesIndex], quotes[quotesIndex])
+}
 
-// function showFormPage() {
-//   posterFormPage.classList.remove('hidden')
-//   mainPosterPage.classList.add('hidden')
-// }
-
-// function showSavedPostersPage() {
-//   mainPosterPage.classList.add('hidden')
-//   savedPostersPage.classList.remove('hidden')
-// }
-
-function randomize() {
-  var txtImgOptions = [images, titles, quotes]
-  var randomPoster = []
-  for (var i = 0; i < txtImgOptions.length; i++) {
-    var index = getRandomIndex(txtImgOptions[i])
-    randomPoster.push(txtImgOptions[i][index])
-  }
-  currentPoster = new Poster(randomPoster[0], randomPoster[1], randomPoster[2])
+function randomizeAndDisplay() {
+  createRandomPoster()
   displayPoster()
 }
 
