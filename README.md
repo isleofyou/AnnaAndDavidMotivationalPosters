@@ -1,18 +1,36 @@
-# Hang In There
+# Anna and David's Motivational Posters
+  Need a little motivation? Use this web application to make your own motivational
+  poster using our supplied images and text or your own!
 
-A boilerplate repo. 
+## Features:
+  - Allows users to create random posters with a single click
+  - Includes functionality for the user to create posters with custom links and text
+  - Users can also save posters for later viewing
 
-## Set Up
+## Install and Setup :
+[GitHub Link](https://github.com/annamkummer/AnnaAndDavidMotivationalPosters)
 
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
+To install: Clone `git@github.com:annamkummer/AnnaAndDavidMotivationalPosters.git`
+and run `open index.HTML`
 
-Project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+## Wins:
+  - We improved our understanding of the interactions between Javascript, CSS, and HTML.
+  - We also had a lot of fun working together to build this site.
 
-To view your project:
+## Challenges and improvements:
+  - A challenge we had was fixing an issue with the randomize function running every time we went back to the main page. We solved this by adding an event.preventDefault() function within the event listener.
+  - Future plans for the application include error messages upon incorrect data input, allowing users to click each piece of the poster to update, and allowing users to drag and drop saved posters into their desired order.
 
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
+## Contributors:
+[Anna Kummer](https://github.com/annamkummer)
+[David Tran](https://github.com/isleofyou)
+
+##Project Spec and Rubric:
+Project Spec [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+Deploy link [here](https://annamkummer.github.io/AnnaAndDavidMotivationalPosters/)
+
+## Technologies used:
+  - Javascript
+  - CSS
+  - HTML
+  - Atom
