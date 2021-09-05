@@ -7,6 +7,8 @@
   - Includes functionality for the user to create posters with custom links and text
   - Users can also save posters for later viewing
 
+![View of saved posters](https://user-images.githubusercontent.com/60856601/132134634-d6ea73ce-c310-4964-b45a-4ea4a0097dca.png)
+
 ## Install and Setup :
 [GitHub Link](https://github.com/annamkummer/AnnaAndDavidMotivationalPosters)
 
@@ -22,11 +24,11 @@ and run `open index.HTML`
   - Future plans for the application include error messages upon incorrect data input, allowing users to click each piece of the poster to update, and allowing users to drag and drop saved posters into their desired order.
 
 ## Contributors:
-[Anna Kummer](https://github.com/annamkummer)
+[Anna Kummer](https://github.com/annamkummer)<br>
 [David Tran](https://github.com/isleofyou)
 
-##Project Spec and Rubric:
-Project Spec [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)
+## Project Spec and Rubric:
+Project Spec [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)<br>
 Deploy link [here](https://annamkummer.github.io/AnnaAndDavidMotivationalPosters/)
 
 ## Technologies used:
