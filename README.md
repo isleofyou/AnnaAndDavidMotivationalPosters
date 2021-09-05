@@ -25,8 +25,8 @@ and run `open index.HTML`
 
 ## Contributors:
 [Anna Kummer](https://github.com/annamkummer)<br>
-[David Tran](https://github.com/isleofyou)
-
+[David Tran](https://github.com/isleofyou)<br>
+Reviewed by: [James Sullivan] (https://github.com/jsullivan5)
 ## Project Spec and Rubric:
 Project Spec [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)<br>
 Deploy link [here](https://annamkummer.github.io/AnnaAndDavidMotivationalPosters/)
