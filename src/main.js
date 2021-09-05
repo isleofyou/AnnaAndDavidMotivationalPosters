@@ -15,7 +15,7 @@ var savedPostersPage = document.querySelector(".saved-posters");
 var userImage = document.querySelector("#poster-image-url");
 var userTitle = document.querySelector("#poster-title");
 var userQuote = document.querySelector("#poster-quote");
-var grid = document.querySelector(".saved-posters-grid")
+var grid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
 var images = [
@@ -119,54 +119,55 @@ var savedPosters = [];
 var currentPoster;
 
 // event listeners go here 👇
-randomizeButton.addEventListener('click', function() {
-  randomize()
-})
-showFormButton.addEventListener('click', function() {
-  posterFormPage.classList.remove("hidden")
-  mainPosterPage.classList.add("hidden")
-})
-savedPostersButton.addEventListener('click', function() {
-  savedPostersPage.classList.remove('hidden')
-  mainPosterPage.classList.add('hidden')
-})
-nevermindButton.addEventListener('click', function() {
-  posterFormPage.classList.add('hidden')
-  mainPosterPage.classList.remove('hidden')
-})
-backToMainButton.addEventListener('click', function() {
-  savedPostersPage.classList.add('hidden')
-  mainPosterPage.classList.remove('hidden')
-})
+randomizeButton.addEventListener('click', randomize)
+showFormButton.addEventListener('click', showFormPage)
+savedPostersButton.addEventListener('click', showSavedPostersPage)
+nevermindButton.addEventListener('click', showMainPage)
+backToMainButton.addEventListener('click', showMainPage)
 savePosterButton.addEventListener('click', function() {
   pushIntoArray()
   saveUserData()
   displayInGrid()
 })
 customPosterButton.addEventListener('click', function() {
-  createCustomPoster();
+  createCustomPoster()
   showUserPoster()
   event.preventDefault()
-});
+})
+grid.addEventListener('dblclick', deletePoster)
+
 // functions and event handlers go here 👇
-
-
-randomize();
+randomize()
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
+function showMainPage() {
+  mainPosterPage.classList.remove('hidden')
+  savedPostersPage.classList.add('hidden')
+  posterFormPage.classList.add('hidden')
+}
+
+function showFormPage() {
+  posterFormPage.classList.remove('hidden')
+  mainPosterPage.classList.add('hidden')
+}
+
+function showSavedPostersPage() {
+  mainPosterPage.classList.add('hidden')
+  savedPostersPage.classList.remove('hidden')
+}
+
 function randomize() {
-  var txtImgOptions = [images, titles, quotes];
-  var randomPoster = [];
+  var txtImgOptions = [images, titles, quotes]
+  var randomPoster = []
   for (var i = 0; i < txtImgOptions.length; i++) {
     var index = getRandomIndex(txtImgOptions[i])
     randomPoster.push(txtImgOptions[i][index])
   }
   currentPoster = new Poster(randomPoster[0], randomPoster[1], randomPoster[2])
-  displayPoster();
-  console.log(mainPosterPage.classList)
+  displayPoster()
 }
 
 function displayPoster() {
@@ -183,30 +184,36 @@ function showUserPoster() {
 
 function createCustomPoster() {
   currentPoster = new Poster(userImage.value, userTitle.value, userQuote.value)
-  console.log('image',currentPoster.imageURL)
 }
 
 function saveUserData() {
   images.push(imageElement.src)
   titles.push(titleElement.innerText)
   quotes.push(quoteElement.innerText)
+}
 
-  }
-
-function pushIntoArray(){
+function pushIntoArray() {
   if (!savedPosters.includes(currentPoster)) {
     savedPosters.push(currentPoster)
-      console.log((!savedPosters.includes(currentPoster)))
-    }
   }
+}
 
 function displayInGrid() {
   grid.innerHTML = ``
   for (var i = 0; i < savedPosters.length; i++) {
-    grid.innerHTML += `<article class= "mini-poster">
+    grid.innerHTML += `<article class= "mini-poster" id = ${savedPosters[i].id}>
     <img src=${savedPosters[i].imageURL} alt="nothin' to see here">
     <h2>${savedPosters[i].title}</h2>
     <h4> ${savedPosters[i].quote}</h4>
     </article>`
   }
+}
+
+function deletePoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (`${savedPosters[i].id}` === event.target.id || `${savedPosters[i].id}` === event.target.parentNode.id) {
+      savedPosters.splice(i, 1)
+    }
+  }
+  displayInGrid()
 }
