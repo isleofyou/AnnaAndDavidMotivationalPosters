@@ -18,6 +18,8 @@ var userQuote = document.querySelector("#poster-quote");
 var grid = document.querySelector(".saved-posters-grid");
 
 // we've provided you with some data to work with 👇
+var savedPosters = [];
+var currentPoster;
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -115,15 +117,22 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+
 
 // event listeners go here 👇
 randomizeButton.addEventListener('click', randomize)
-showFormButton.addEventListener('click', showFormPage)
-savedPostersButton.addEventListener('click', showSavedPostersPage)
-nevermindButton.addEventListener('click', showMainPage)
-backToMainButton.addEventListener('click', showMainPage)
+showFormButton.addEventListener('click', function(){
+  toggleHiddenView(posterFormPage, mainPosterPage)
+})
+savedPostersButton.addEventListener('click', function(){
+  toggleHiddenView(savedPostersPage, mainPosterPage)
+})
+nevermindButton.addEventListener('click', function(){
+  toggleHiddenView(mainPosterPage, posterFormPage)
+})
+backToMainButton.addEventListener('click', function(){
+  toggleHiddenView(mainPosterPage, savedPostersPage)
+})
 savePosterButton.addEventListener('click', function() {
   pushIntoArray()
   saveUserData()
@@ -139,25 +148,30 @@ grid.addEventListener('dblclick', deletePoster)
 // functions and event handlers go here 👇
 randomize()
 
+function toggleHiddenView(elementToShow, elementToHide) {
+	elementToShow.classList.remove('hidden')
+  elementToHide.classList.add('hidden')
+}
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-function showMainPage() {
-  mainPosterPage.classList.remove('hidden')
-  savedPostersPage.classList.add('hidden')
-  posterFormPage.classList.add('hidden')
-}
+// function showMainPage() {
+//   mainPosterPage.classList.remove('hidden')
+//   savedPostersPage.classList.add('hidden')
+//   posterFormPage.classList.add('hidden')
+// }
 
-function showFormPage() {
-  posterFormPage.classList.remove('hidden')
-  mainPosterPage.classList.add('hidden')
-}
+// function showFormPage() {
+//   posterFormPage.classList.remove('hidden')
+//   mainPosterPage.classList.add('hidden')
+// }
 
-function showSavedPostersPage() {
-  mainPosterPage.classList.add('hidden')
-  savedPostersPage.classList.remove('hidden')
-}
+// function showSavedPostersPage() {
+//   mainPosterPage.classList.add('hidden')
+//   savedPostersPage.classList.remove('hidden')
+// }
 
 function randomize() {
   var txtImgOptions = [images, titles, quotes]
@@ -177,8 +191,7 @@ function displayPoster() {
 }
 
 function showUserPoster() {
-  posterFormPage.classList.add("hidden")
-  mainPosterPage.classList.remove("hidden")
+  toggleHiddenView(mainPosterPage, posterFormPage)
   displayPoster()
 }
 
