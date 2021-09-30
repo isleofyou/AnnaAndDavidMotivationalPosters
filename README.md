@@ -30,7 +30,7 @@ Reviewed by: [James Sullivan](https://github.com/jsullivan5)
 
 ## Project Spec and Rubric:
 Project Spec [here](https://frontend.turing.io/projects/module-1/hang-in-there.html)<br>
-Deploy link [here](https://annamkummer.github.io/AnnaAndDavidMotivationalPosters/)
+Deploy link [here](https://isleofyou.github.io/AnnaAndDavidMotivationalPosters/)
 
 ## Technologies used:
   - Javascript
